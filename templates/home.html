@@ -1,0 +1,62 @@
+<!-- {% block content %}
+
+    <h1>Choose your Pokemon</h1>
+    <body class="bg-success p-2 text-white bg-opacity-75">
+        
+        <form>
+            <input
+                type="text"
+                id="text"
+                placeholder="Input pokemon name here"
+                onfocus="this.value=''"
+                maxlength="15"
+                minlength="2"
+            >
+            <button
+                id="show"
+                type="button"
+                class="btn btn-primary"
+            >Show me that pokemon</button>
+            <button
+                id='remove'
+                type="button"
+                class=" btn btn-primary"
+            >remove that pokemon</button>
+
+
+        </form>
+        <br>
+        <div
+            id='main-div'
+            class="container"
+        >
+            <div id='photo-container'>
+            </div>
+            <div id='move-list'>
+            </div>
+            <div id='types'>
+            </div>
+        </div>
+
+        <script src="https://unpkg.com/axios/dist/axios.js"></script>
+        <script src="{{url_for('static', filename='choose.js')}}"></script>
+    </body>
+    {% endblock %} -->
+
+
+    <!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <title>Pokedex</title>
+    </head>
+    <body>
+        <div class="container">
+            <h1>Pokedex</h1>
+            <ul id="pokedex"></ul>
+        </div>
+        <script src="{{url_for('static', filename='choose.js')}}"></script>
+    </body>
+</html>
