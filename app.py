@@ -2,7 +2,7 @@ from flask import Flask, render_template, request, flash, redirect
 from flask_debugtoolbar import DebugToolbarExtension
 from models import db, connect_db, User, PokemonInfo, Abilities
 from forms import RegisterForm, LoginForm
-
+import requests
 app = Flask (__name__)
 
 
@@ -18,13 +18,31 @@ connect_db(app)
 
 
 
-@app.route('/static')
+@app.route('/pokemon/show')
 def homepage():
     """Show homepage: """
 
+    res = requests.get("https://pokeapi.co/api/v2/pokemon")
+    data = res.json()
+    results = data['results']
+    bulbasaur = results[0]
+# the variable "results" is a list so must use indeces to access items
+    for x in results[0:150]:
+        print(x)
 
-    return render_template('home.html')
+    return render_template('/pokemon/show.html', bulbasaur=bulbasaur)
 
+@app.route('/')
+def practice():
+
+    res = requests.get("https://pokeapi.co/api/v2/pokemon")
+    data = res.json()
+    results = data['results']
+    bulbasaur = results[0]
+# the variable "results" is a list so must use indeces to access items
+    for x in results[0:150]:
+        print(x)
+    render_template('practice.html')
 
 
 @app.errorhandler(404)
@@ -32,43 +50,3 @@ def page_not_found(e):
     """Show 404 NOT FOUND page."""
 
     return render_template('404.html'), 404
-
-
-
-@app.route('/users/new', methods=["GET"])
-def users_new_form():
-    """Show a form to create a new user"""
-
-    form = RegisterForm()
-
-    if form.validate_on_submit():
-        username = form.username.data
-        password = form.password.data
-
-        user = User.register(username, password)
-
-        db.session.commit()
-    return render_template('users/new.html')
-
-
-
-@app.route("/users/new", methods=["POST"])
-def users_new():
-    """Handle form submission for creating a new user"""
-
-    new_user = User(
-        username=request.form['username'])
-
-    db.session.add(new_user)
-    db.session.commit()
-    flash(f"User {new_user.username} added.")
-
-    return redirect("/users")
-
-
-@app.route('/users/<int:user_id>')
-def users_show(user_id):
-    """Show a page with info on a specific user"""
-
-    user = User.query.get_or_404(user_id)
-    return render_template('users/show.html', user=user)

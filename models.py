@@ -29,6 +29,7 @@ class PokemonInfo(db.Model):
 
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     name = db.Column(db.Text,  nullable=False)
+    image = db.Column(db.Text, nullable=False)
     pokemon_type = db.Column(db.Text, nullable=False)   
     ability_id = db.Column(
         db.Integer,
