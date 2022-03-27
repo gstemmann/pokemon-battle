@@ -23,7 +23,7 @@ class User(db.Model):
     # pokemon_list = db.relationship("Pokemon_list", backref="user", cascade="all, delete-orphan")
 
 
-class PokemonInfo(db.Model):
+class Pokemon(db.Model):
 
     __tablename__ = 'pokemon_info'
 
@@ -34,6 +34,9 @@ class PokemonInfo(db.Model):
     ability_id = db.Column(
         db.Integer,
         db.ForeignKey('abilities.id'), nullable=True)
+
+    def __repr__(self):
+        return f"<Pokemon {self.id} {self.name} {self.pokemon_type}>"
 
 class Abilities(db.Model):
 

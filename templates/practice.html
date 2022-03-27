@@ -7,6 +7,14 @@
     <title>Practice</title>
 </head>
 <body>
-    <p>{{ bulbasaur }}</p>
+    <h1>Show all the pokemon</h1>
+    <ul>
+        {% for p in pokemon %}
+          <li>
+            {{ p.id }} {{ p.name }} <img src="{{ p.image }}">
+          </li>
+        {% endfor %}
+        </ul>
+  
 </body>
 </html>
