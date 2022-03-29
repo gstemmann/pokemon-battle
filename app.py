@@ -2,6 +2,7 @@ from flask import Flask, render_template, request, flash, redirect
 from flask_debugtoolbar import DebugToolbarExtension
 from models import db, connect_db, User, Pokemon, Abilities
 from forms import RegisterForm, LoginForm
+import pypokedex
 import requests
 app = Flask (__name__)
 
@@ -18,44 +19,65 @@ connect_db(app)
 
 
 ################# USER ROUTES ############################
-@app.route('/register')
-def register():
-    print('this is a register page')
-    return render_template ('users/register.html')
+@app.route('/signup', methods=["GET", "POST"])
+def signup():
 
+    """Handle user signup.
+    Create new user and add to DB. Redirect to home page.
+    If form not valid, present form.
+    """
+
+    form = RegisterForm()
+
+    if form.validate_on_submit():
+        user = User(
+                username=form.username.data,
+                password=form.password.data,
+            )
+        if user:
+            flash(f"Hello, {user.username}!", "account successfully created")
+            db.session.commit()
+            return redirect("/")
+    else:
+        return render_template('users/signup.html', form=form)
+
+
+@app.route('/login', methods=["GET", "POST"])
+def login():
+    """Handle user login."""
+
+    form = LoginForm()
+
+    if form.validate_on_submit():
+        user = User.authenticate(form.username.data,
+                                 form.password.data)
+
+        if user:
+            flash(f"Hello, {user.username}!", "success")
+            return redirect("/")
+
+        flash("Invalid credentials.", 'danger')
+
+    return render_template('users/login.html', form=form)
+
+
+@app.route('/logout')
+def logout():
+    """Handle logout of user."""
+
+    flash('you are now logged out')
+    return redirect("/login")
 
 
 ################ POKEMON ROUTES ############################
 
-@app.route('/pokemon/show')
-def home():
 
-    return render_template ('/pokemon/show.html')
+@app.route('/pokemon/choose')
+def show_pokemon_list():
+    # pokemon_input = request.form['pokemon_input']
+    # print(pokemon_input)
+    pokemon = pypokedex.get(name='dragonite')
+    moves = [move.name for move in pokemon.moves['sun-moon']]
+    # types = pokemon.types
 
-@app.route('/')
-def practice():
-
-    pokemon = Pokemon.query.all()
-    return render_template ('practice.html', pokemon=pokemon)
-
-@app.route('/pokemon/<int:id>')
-def pokemon_show(pokemon_id):
-    """Show a page with info on a specific user"""
-
-    pokemon = Pokemon.query.get_or_404(pokemon_id)
-    return render_template('pokemon/pokemon.html', pokemon=pokemon)
-
-
-# @app.route('/pokemon/show')
-# def homepage():
-#     """Show homepage: """
-
-#     res = requests.get("https://pokeapi.co/api/v2/pokemon")
-#     data = res.json()
-#     results = data['results']
-#     ivysaur = results[0]
-# # the variable "results" is a list so must use indeces to access items
-#     for x in results[0:150]:
-#         print(x)
-
-#     return render_template('/pokemon/show.html', ivysaur=ivysaur)
+    return render_template ('/pokemon/choose.html', pokemon=pokemon, moves=moves)

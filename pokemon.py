@@ -42,3 +42,18 @@ def get_pokemon():
         print(abilities)
 
 p = pypokedex.get(name='charmander')
+p.moves = [move.name for move in p.moves['sun-moon']]
+
+# @app.route('/pokemon/show')
+# def homepage():
+#     """Show homepage: """
+
+#     res = requests.get("https://pokeapi.co/api/v2/pokemon")
+#     data = res.json()
+#     results = data['results']
+#     ivysaur = results[0]
+# # the variable "results" is a list so must use indeces to access items
+#     for x in results[0:150]:
+#         print(x)
+
+#     return render_template('/pokemon/show.html', ivysaur=ivysaur)
