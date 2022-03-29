@@ -11,7 +11,7 @@
     <ul>
         {% for p in pokemon %}
           <li>
-            {{ p.id }} {{ p.name }} <img src="{{ p.image }}">
+           <a href="/pokemon/{{ p.id }}"> {{ p.id }} {{ p.name }}</a> <img src="{{ p.image }}">
           </li>
         {% endfor %}
         </ul>

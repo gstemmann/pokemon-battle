@@ -17,6 +17,34 @@ toolbar = DebugToolbarExtension(app)
 connect_db(app)
 
 
+################# USER ROUTES ############################
+@app.route('/register')
+def register():
+    print('this is a register page')
+    return render_template ('users/register.html')
+
+
+
+################ POKEMON ROUTES ############################
+
+@app.route('/pokemon/show')
+def home():
+
+    return render_template ('/pokemon/show.html')
+
+@app.route('/')
+def practice():
+
+    pokemon = Pokemon.query.all()
+    return render_template ('practice.html', pokemon=pokemon)
+
+@app.route('/pokemon/<int:id>')
+def pokemon_show(pokemon_id):
+    """Show a page with info on a specific user"""
+
+    pokemon = Pokemon.query.get_or_404(pokemon_id)
+    return render_template('pokemon/pokemon.html', pokemon=pokemon)
+
 
 # @app.route('/pokemon/show')
 # def homepage():
@@ -31,22 +59,3 @@ connect_db(app)
 #         print(x)
 
 #     return render_template('/pokemon/show.html', ivysaur=ivysaur)
-
-@app.route('/')
-def practice():
-
-    pokemon = Pokemon.query.all()
-    return render_template ('practice.html', pokemon=pokemon)
-
-@app.route('/pokemon/<int:id>')
-def pokemon_show(pokemon_id):
-    """Show a page with info on a specific user"""
-
-    pokemon = Pokemon.query.get_or_404(pokemon_id)
-    return render_template('pokemon.html', pokemon=pokemon)
-
-@app.errorhandler(404)
-def page_not_found(e):
-    """Show 404 NOT FOUND page."""
-
-    return render_template('404.html'), 404
