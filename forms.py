@@ -31,3 +31,4 @@ class RegisterForm(FlaskForm):
         validators=[InputRequired(), Length(min=6, max=55)],
     )
   
+  

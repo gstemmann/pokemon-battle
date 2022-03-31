@@ -42,7 +42,7 @@ def get_pokemon():
         print(abilities)
 
 p = pypokedex.get(name='charmander')
-p.moves = [move.name for move in p.moves['sun-moon']]
+
 
 # @app.route('/pokemon/show')
 # def homepage():

@@ -81,3 +81,14 @@ def show_pokemon_list():
     # types = pokemon.types
 
     return render_template ('/pokemon/choose.html', pokemon=pokemon, moves=moves)
+
+
+@app.route('/pokemon/battle')
+def show_pokemon_battle_screen():
+    # pokemon_input = request.form['pokemon_input']
+    # print(pokemon_input)
+    pokemon = pypokedex.get(name='dragonite')
+    moves = [move.name for move in pokemon.moves['sun-moon']]
+    
+
+    return render_template ('/pokemon/battle.html', pokemon=pokemon, moves=moves)
