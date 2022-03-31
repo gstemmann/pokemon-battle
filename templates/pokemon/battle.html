@@ -5,11 +5,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Battle</title>
-    <link rel="stylesheet" href="battle.css">
+    <link href="http://fonts.cdnfonts.com/css/common-pixel" rel="stylesheet">
+                
+    <link href={{ url_for('static', filename='battle.css') }} rel="stylesheet">
+    
 </head>
 <body>
-    
-<table>
+    <h1 class="'header">
+        <img class="logo" title="Reset Game" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/International_Pok%C3%A9mon_logo.svg/2000px-International_Pok%C3%A9mon_logo.svg.png" alt="Pokemon">            
+
+</h1>
+<table class="stadium">
     <tr>
             <td id="hp1"></td>
             <td id="hp2"></td>
@@ -31,7 +37,7 @@
     </tr>
 
 </table>
-<!-- <script src="{{url_for('static', filename='battle.js')}}"></script> -->
+<script src="{{url_for('static', filename='battle.js')}}"></script>
 </body>
 </html>
 
