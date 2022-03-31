@@ -61,6 +61,3 @@ showButton.addEventListener('click', function(e) {
 	e.preventDefault();
 	getPokemonData();
 });
-
-// after removal of the first input for some reason it will save and the second input gets added
-// also you can add more stats... like

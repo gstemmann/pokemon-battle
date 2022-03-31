@@ -17,8 +17,12 @@ toolbar = DebugToolbarExtension(app)
 
 connect_db(app)
 
+@app.route('/')
+def start():
+    return render_template('home.html')
 
-################# USER ROUTES ############################
+
+############################# USER ROUTES #################################
 @app.route('/signup', methods=["GET", "POST"])
 def signup():
 
@@ -60,6 +64,12 @@ def login():
 
     return render_template('users/login.html', form=form)
 
+# ADD A USER PROFILE HERE WITH LIST OF USER'S POKEMON
+
+# @app.route('/user/<id:int>', methods=['GET'])
+# def show_user(user_id):
+#     user = User.query.get(user_id)
+#     return render_template('user/show.html', user=user)
 
 @app.route('/logout')
 def logout():
@@ -69,7 +79,7 @@ def logout():
     return redirect("/login")
 
 
-################ POKEMON ROUTES ############################
+###################### POKEMON ROUTES ############################
 
 
 @app.route('/pokemon/choose')
@@ -85,10 +95,6 @@ def show_pokemon_list():
 
 @app.route('/pokemon/battle')
 def show_pokemon_battle_screen():
-    # pokemon_input = request.form['pokemon_input']
-    # print(pokemon_input)
-    pokemon = pypokedex.get(name='dragonite')
-    moves = [move.name for move in pokemon.moves['sun-moon']]
-    
+  
 
-    return render_template ('/pokemon/battle.html', pokemon=pokemon, moves=moves)
+    return render_template ('/pokemon/battle.html')
