@@ -41,6 +41,13 @@ def get_pokemon():
         abilities = pypokedex.get(abilities=f"{i}")
         print(abilities)
 
+
+
+
+
+
+
+
 p = pypokedex.get(name='charmander')
 
 

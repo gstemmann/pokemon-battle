@@ -52,6 +52,7 @@ const displayPokemon = (pokemon) => {
 
 // displayPokemon();
 
+
 async function getPokemonData() {
 	let inputValue = document.getElementById('text').value;
 	const response = await axios({

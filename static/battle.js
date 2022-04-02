@@ -9,44 +9,93 @@ class Pokemon {
 }
 
 let pkmList = [
-['Charizard', 'https://img.pokemondb.net/sprites/black-white/normal/charizard.png', 360, [
+['Charizard', 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/6.svg', 360, [
     ['Flamethrower', 'fire', 95, 0.95],
     ['Dragon Claw', 'dragon', 100, 0.95],
     ['Air slash', 'fly', 75, 0.85],
     ['Slash', 'normal', 70, ]
 ]],
-['Blastoise', 'https://img.pokemondb.net/sprites/black-white/normal/blastoise.png', 362, [
+['Blastoise', 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/9.svg', 362, [
     ['Surf', 'water', 90, 0.95],
     ['Crunch', 'normal', 80, 0.95],
     ['Ice punch', 'ice', 75, 0.95],
     ['Flash cannon', 'steel', 80, 0.95]
 ]],
-['Venusaur', 'https://img.pokemondb.net/sprites/black-white/normal/venusaur-f.png', 364, [
+['Venusaur', 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/3.svg', 364, [
     ['Petal Blizzard', 'grass', 90, 0.95],
     ['Sludge bomb', 'poison', 90, 0.95],
     ['Earthquake', 'ground', 100, 0.95],
     ['Body Slam', 'normal', 85, 0.95]
-]]
+]],
+['Gengar', 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/94.svg', 361, [
+    ['Confusion', 'electric', 20, 0.99],
+    ['Hypnosis', 'electric', 100, 0.88],
+    ['Dream Eater', 'normal', 90, 0.90],
+    ['Night Shade', 'normal', 80, 0.95]
+]],
+['Dragonite', 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/149.svg', 366, [
+    ['Thunderbolt', 'electric', 20, 0.99],
+    ['Dragon Rage', 'electric', 100, 0.88],
+    ['Hyper Beam', 'normal', 90, 0.90],
+    ['Thunder', 'normal', 80, 0.95]
+]],
+['Nidoking', 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/34.svg', 366, [
+    ['Stomp', 'electric', 20, 0.99],
+    ['Fury Attack', 'electric', 100, 0.88],
+    ['Seismic Toss', 'normal', 90, 0.90],
+    ['Toxic', 'normal', 80, 0.95]
+]],
+['Pidgeot', 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/18.svg', 368, [
+    ['Wing Attack', 'electric', 20, 0.99],
+    ['Sand Attack', 'electric', 100, 0.88],
+    ['Peck', 'normal', 90, 0.90],
+    ['Quick Attack', 'normal', 80, 0.95]
+]],
+['Gyarados', 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/130.svg', 370, [
+    ['Thrash', 'electric', 20, 0.99],
+    ['Dragon Rage', 'electric', 100, 0.88],
+    ['Hydro Pump', 'normal', 90, 0.90],
+    ['Ice Beam', 'normal', 80, 0.95]
+]],
+['Snorlax', 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/143.svg', 377, [
+    ['Rest', 'electric', 20, 0.99],
+    ['Rage', 'electric', 100, 0.88],
+    ['Hyper Beam', 'normal', 90, 0.90],
+    ['Body Slam', 'normal', 80, 0.95]
+]],
+['Alakazam', 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/65.svg', 359, [
+    ['Kenesis', 'electric', 20, 0.99],
+    ['Psybeam', 'electric', 100, 0.88],
+    ['Psywave', 'normal', 90, 0.90],
+    ['Psychic', 'normal', 80, 0.95]
+]],
+['Chansey', 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/113.svg', 369, [
+    ['Pound', 'electric', 20, 0.99],
+    ['Double Slap', 'electric', 100, 0.88],
+    ['Body Slam', 'normal', 90, 0.90],
+    ['Headbutt', 'normal', 80, 0.95]
+]],
+['Mewtwo', 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/150.svg', 364, [
+    ['Psychic', 'electric', 20, 0.99],
+    ['Mega Punch', 'electric', 100, 0.88],
+    ['Blizzard', 'normal', 90, 0.90],
+    ['Fire Blast', 'normal', 80, 0.95]
+]],
 ];
-let typeMatch = {
-'Charizard': [
-    ['ground'],
-    ['water', 'rock'],
-    ['fire', 'grass', 'steel']
-],
-'Blastoise': [
-    [''],
-    ['grass'],
-    ['fire', 'water']
-],
-'Venusaur': [
-    ['poison'],
-    ['fire', 'fly', 'ice', 'steel'],
-    ['grass', 'water']
-],
-}
 
-function showPokemon(boolean) {
+
+function showUserPokemon(boolean) {
+    let p = pkmList[Math.floor(Math.random() * pkmList.length)];
+    let pkm = new Pokemon(p[0], p[1], p[2], p[3]);
+    if (boolean) {
+        for (i = 0; i < 4; i++) {
+            document.getElementById('m' + i).value = pkm.moves[i][0];
+        }
+    }
+    return pkm;
+    }
+    
+function showAiPokemon(boolean) {
 let p = pkmList[Math.floor(Math.random() * pkmList.length)];
 let pkm = new Pokemon(p[0], p[1], p[2], p[3]);
 if (boolean) {
@@ -55,14 +104,15 @@ if (boolean) {
     }
 }
 return pkm;
-
 }
-let userPokemon = showPokemon(true);
+
+let userPokemon = showUserPokemon(true);
 sprite1 = document.createElement('img');
 sprite1.src = userPokemon.sprite;
 document.getElementById('userPokemon').appendChild(sprite1);
 document.getElementById('hp1').innerHTML = '<p>HP: ' + userPokemon.hp + '/' + userPokemon.fullhp + '</p>';
-let aiPokemon = showPokemon(false);
+
+let aiPokemon = showAiPokemon(false);
 sprite2 = document.createElement('img');
 sprite2.src = aiPokemon.sprite;
 document.getElementById('aiPokemon').appendChild(sprite2);

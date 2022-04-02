@@ -2,8 +2,10 @@ from flask import Flask, render_template, request, flash, redirect
 from flask_debugtoolbar import DebugToolbarExtension
 from models import db, connect_db, User, Pokemon, Abilities
 from forms import RegisterForm, LoginForm
-import pypokedex
+from unicodedata import name
 import requests
+import pypokedex
+
 app = Flask (__name__)
 
 
@@ -82,15 +84,19 @@ def logout():
 ###################### POKEMON ROUTES ############################
 
 
-@app.route('/pokemon/choose')
-def show_pokemon_list():
-    # pokemon_input = request.form['pokemon_input']
-    # print(pokemon_input)
-    pokemon = pypokedex.get(name='dragonite')
-    moves = [move.name for move in pokemon.moves['sun-moon']]
-    # types = pokemon.types
+# @app.route('/pokemon/show')
+# def get+pokemon_name():
+#     res = requests.get()
 
-    return render_template ('/pokemon/choose.html', pokemon=pokemon, moves=moves)
+# @app.route('/pokemon/choose')
+# def show_pokemon_list():
+#     # pokemon_input = request.form['pokemon_input']
+#     # print(pokemon_input)
+#     pokemon = pypokedex.get(name='dragonite')
+#     moves = [move.name for move in pokemon.moves['sun-moon']]
+#     # types = pokemon.types
+
+#     return render_template ('/pokemon/choose.html', pokemon=pokemon, moves=moves)
 
 
 @app.route('/pokemon/battle')

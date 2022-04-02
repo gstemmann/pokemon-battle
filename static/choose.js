@@ -61,3 +61,13 @@ showButton.addEventListener('click', function(e) {
 	e.preventDefault();
 	getPokemonData();
 });
+
+function getPokemon() {
+	for (let i=1; i<=151; i++)  {
+	const response = axios({
+		url    : `${base_url}/pokemon/${i}/`,
+		method : 'GET'
+	});
+	console.log(response.data.moves);
+}
+}
