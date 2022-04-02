@@ -24,6 +24,12 @@ def start():
     return render_template('home.html')
 
 
+@app.route('/practice')
+def show_choose_screen():
+
+    return render_template('/practice.html')
+
+
 ############################# USER ROUTES #################################
 @app.route('/signup', methods=["GET", "POST"])
 def signup():
@@ -97,7 +103,6 @@ def logout():
 #     # types = pokemon.types
 
 #     return render_template ('/pokemon/choose.html', pokemon=pokemon, moves=moves)
-
 
 @app.route('/pokemon/battle')
 def show_pokemon_battle_screen():

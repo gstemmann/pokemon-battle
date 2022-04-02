@@ -20,7 +20,6 @@ class User(db.Model):
     username = db.Column(db.Text, nullable=False)
     password = db.Column(db.Text, nullable=False)
 
-    # pokemon_list = db.relationship("Pokemon_list", backref="user", cascade="all, delete-orphan")
 
 
 class Pokemon(db.Model):
@@ -29,14 +28,14 @@ class Pokemon(db.Model):
 
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     name = db.Column(db.Text,  nullable=False)
-    image = db.Column(db.Text, nullable=False)
-    pokemon_type = db.Column(db.Text, nullable=False)   
+    sprite = db.Column(db.Text, nullable=False)
+    hp = db.Column(db.Integer, nullable=False)   
     ability_id = db.Column(
         db.Integer,
         db.ForeignKey('abilities.id'), nullable=True)
 
     def __repr__(self):
-        return f"<Pokemon {self.id} {self.name} {self.pokemon_type}>"
+        return f"<Pokemon {self.id} {self.name} {self.hp}>"
 
 class Abilities(db.Model):
 
@@ -44,4 +43,3 @@ class Abilities(db.Model):
 
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     name = db.Column(db.Text, nullable=False)
-    type = db.Column(db.Text, nullable=True)  
