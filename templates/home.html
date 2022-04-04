@@ -1,43 +1,61 @@
 {% extends 'base.html' %}
 {% block content %}
 
-    <h1>Choose your Pokemon</h1>
-    <body class="bg-success p-2 text-white bg-opacity-75">
-        
+ 
+    <body>
+        <h1>View Pokemon Stats</h1>
+        <section class="icon-list">    
+            <i class="nes-pokeball"></i>
+            <i class="nes-bulbasaur"></i>
+            <i class="nes-charmander"></i>
+            <i class="nes-squirtle"></i>
+        </section>
+        <div class="nes-container is-rounded is-dark">
         <form>
+              <div style="background-color:#212529; padding: 1rem;" class="nes-field is-inline">
+                <label for="dark_field" style="color:#fff;">Pokemon Name</label>
             <input
                 type="text"
+                class="nes-input is-dark"
                 id="text"
                 placeholder="Input pokemon name here"
                 onfocus="this.value=''"
                 maxlength="15"
                 minlength="2"
             >
+        </div>
             <button
                 id="show"
                 type="button"
-                class="btn btn-primary"
+                class = "nes-btn is-warning"
             >Show me that pokemon</button>
             <button
                 id='remove'
                 type="button"
-                class=" btn btn-primary"
+                class="nes-btn is-error"
             >remove that pokemon</button>
 
 
         </form>
         <br>
-        <div
-            id='main-div'
-            class="container"
-        >
-            <div id='photo-container'>
-            </div>
-            <div id='move-list'>
-            </div>
-            <div id='types'>
-            </div>
+        
+        <div id='main-div' class="container">
+            <table>
+                <tr>
+                    <div id='photo-container'></div>
+                </tr>
+                <tr>
+                    <div id='move-list'></div>
+                </tr>
+                <tr>
+                    <div id='types'></div>
+                </tr>
+            </table>
         </div>
+    
+    </div>
+        <a href="/pokemon/battle">go to battle screen</a>
+
 
         <script src="https://unpkg.com/axios/dist/axios.js"></script>
         <script src="{{url_for('static', filename='choose.js')}}"></script>

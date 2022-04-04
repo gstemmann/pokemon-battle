@@ -19,7 +19,7 @@ toolbar = DebugToolbarExtension(app)
 
 connect_db(app)
 
-@app.route('/')
+@app.route('/pokemon')
 def start():
 
     return render_template('home.html')
