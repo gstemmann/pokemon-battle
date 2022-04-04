@@ -53,26 +53,26 @@ let pkmList = [
 ]],
 ['Gyarados', 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/130.svg', 370, [
     ['Thrash', 'electric', 20, 0.99],
-    ['Dragon Rage', 'electric', 100, 0.88],
+    ['Hyper Fang', 'electric', 100, 0.88],
     ['Hydro Pump', 'normal', 90, 0.90],
     ['Ice Beam', 'normal', 80, 0.95]
 ]],
 ['Snorlax', 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/143.svg', 377, [
     ['Rest', 'electric', 20, 0.99],
     ['Rage', 'electric', 100, 0.88],
-    ['Hyper Beam', 'normal', 90, 0.90],
-    ['Body Slam', 'normal', 80, 0.95]
+    ['Scratch', 'normal', 90, 0.90],
+    ['Leftovers', 'normal', 80, 0.95]
 ]],
 ['Alakazam', 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/65.svg', 359, [
     ['Kenesis', 'electric', 20, 0.99],
     ['Psybeam', 'electric', 100, 0.88],
     ['Psywave', 'normal', 90, 0.90],
-    ['Psychic', 'normal', 80, 0.95]
+    ['Poison Gas', 'normal', 80, 0.95]
 ]],
 ['Chansey', 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/113.svg', 369, [
     ['Pound', 'electric', 20, 0.99],
     ['Double Slap', 'electric', 100, 0.88],
-    ['Body Slam', 'normal', 90, 0.90],
+    ['Softboiled', 'normal', 90, 0.90],
     ['Headbutt', 'normal', 80, 0.95]
 ]],
 ['Mewtwo', 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/150.svg', 364, [
@@ -126,7 +126,7 @@ let move = userPokemon.moves[i];
 function handleAttacks(btn, move, userPokemon, aiPokemon) {
     btn.addEventListener('click', function(e) {
         attack(move, userPokemon, aiPokemon, 'hp2', '');
-        setTimeout(attack, 2000, aiPokemon.moves[Math.floor(Math.random() * 3)], aiPokemon, userPokemon, 'hp1', 'Enemy');
+        setTimeout(attack, 2000, aiPokemon.moves[Math.floor(Math.random() * 3)], aiPokemon, userPokemon, 'hp1', 'Enemy ');
     });
 }
 handleAttacks(btn, move, userPokemon, aiPokemon);

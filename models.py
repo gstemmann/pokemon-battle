@@ -37,7 +37,7 @@ class Pokemon(db.Model):
     def __repr__(self):
         return f"<Pokemon {self.id} {self.name} {self.hp}>"
 
-class Abilities(db.Model):
+class Ability(db.Model):
 
     __tablename__ = 'abilities'
 

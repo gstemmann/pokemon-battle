@@ -13,10 +13,14 @@
 {% extends 'base.html' %}
 {% block content %}
 <body>
-    <h1 class="'header">
-        <img class="logo" title="Reset Game" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/International_Pok%C3%A9mon_logo.svg/2000px-International_Pok%C3%A9mon_logo.svg.png" alt="Pokemon">            
+        <div class="nes-container with-title is-centered">
+         <h1 class="title">
+        <img style="text-align:center;width:300px;" class="logo" title="Reset Game" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/International_Pok%C3%A9mon_logo.svg/2000px-International_Pok%C3%A9mon_logo.svg.png" alt="Pokemon">            
 
-</h1>
+        </h1>
+         </div>
+
+
 <table class="stadium">
     <tr>
             <td id="hp1"></td>
@@ -27,19 +31,20 @@
             <td id="aiPokemon"></td>
     </tr>
     <tr>
-            <td colspan="2" id="comment"></td>
+            <td id="comment"></td>
     </tr>
     <tr>
             <td>
                 
-                    <input type = 'button' class = "btn btn-primary" id = 'm0'>
-                    <input type = 'button' class = "btn btn-primary" id = 'm1'>
-                    <input type = 'button' class = "btn btn-primary" id = 'm2'>
-                    <input type = 'button' class = "btn btn-primary" id = 'm3'>
+                    <input type = 'button' class = "nes-btn is-primary" id = 'm0'>
+                    <input type = 'button' class = "nes-btn is-success" id = 'm1'>
+                    <input type = 'button' class = "nes-btn is-warning" id = 'm2'>
+                    <input type = 'button' class = "nes-btn is-error" id = 'm3'>
             </td>
     </tr>
 
 </table>
+
 <script src="{{url_for('static', filename='battle.js')}}"></script>
 </body>
 </html>

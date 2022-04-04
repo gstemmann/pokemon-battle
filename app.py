@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request, flash, redirect
 from flask_debugtoolbar import DebugToolbarExtension
-from models import db, connect_db, User, Pokemon, Abilities
+from models import db, connect_db, User, Pokemon, Ability
 from forms import RegisterForm, LoginForm
 from unicodedata import name
 import requests
@@ -21,14 +21,8 @@ connect_db(app)
 
 @app.route('/')
 def start():
+
     return render_template('home.html')
-
-
-@app.route('/practice')
-def show_choose_screen():
-
-    return render_template('/practice.html')
-
 
 ############################# USER ROUTES #################################
 @app.route('/signup', methods=["GET", "POST"])
@@ -90,9 +84,12 @@ def logout():
 ###################### POKEMON ROUTES ############################
 
 
-# @app.route('/pokemon/show')
-# def get+pokemon_name():
-#     res = requests.get()
+@app.route('/pokemon/show')
+def show_pokemon():
+    pokemon = Pokemon.query.all()
+    print('*******************')
+    print(pokemon)
+    return render_template('pokemon/pokemon.html', pokemon=pokemon)
 
 # @app.route('/pokemon/choose')
 # def show_pokemon_list():
