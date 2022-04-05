@@ -9,6 +9,12 @@ class Pokemon {
 }
 
 let pkmList = [
+['Dragonite', 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/149.svg', 366, [
+    ['Thunderbolt', 'electric', 20, 0.99],
+    ['Dragon Rage', 'electric', 100, 0.88],
+    ['Hyper Beam', 'normal', 90, 0.90],
+    ['Thunder', 'normal', 80, 0.95]
+]],
 ['Charizard', 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/6.svg', 360, [
     ['Flamethrower', 'fire', 95, 0.95],
     ['Dragon Claw', 'dragon', 100, 0.95],
@@ -32,12 +38,6 @@ let pkmList = [
     ['Hypnosis', 'electric', 100, 0.88],
     ['Dream Eater', 'normal', 90, 0.90],
     ['Night Shade', 'normal', 80, 0.95]
-]],
-['Dragonite', 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/149.svg', 366, [
-    ['Thunderbolt', 'electric', 20, 0.99],
-    ['Dragon Rage', 'electric', 100, 0.88],
-    ['Hyper Beam', 'normal', 90, 0.90],
-    ['Thunder', 'normal', 80, 0.95]
 ]],
 ['Nidoking', 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/34.svg', 366, [
     ['Stomp', 'electric', 20, 0.99],
@@ -85,26 +85,26 @@ let pkmList = [
 
 
 function showUserPokemon(boolean) {
-    let p = pkmList[Math.floor(Math.random() * pkmList.length)];
-    let pkm = new Pokemon(p[0], p[1], p[2], p[3]);
+    let p = pkmList[0];
+    let newPokemonMoves = new Pokemon(p[0], p[1], p[2], p[3]);
     if (boolean) {
         for (i = 0; i < 4; i++) {
-            document.getElementById('m' + i).value = pkm.moves[i][0];
+            document.getElementById('m' + i).value = newPokemonMoves.moves[i][0];
         }
     }
-    return pkm;
+    return newPokemonMoves;
     }
     
 function showAiPokemon(boolean) {
-let p = pkmList[Math.floor(Math.random() * pkmList.length)];
-let pkm = new Pokemon(p[0], p[1], p[2], p[3]);
-if (boolean) {
-    for (i = 0; i < 4; i++) {
-        document.getElementById('m' + i).value = pkm.moves[i][0];
+    let p = pkmList[Math.floor(Math.random() * pkmList.length)];
+    let newPokemonMoves = new Pokemon(p[0], p[1], p[2], p[3]);
+    if (boolean) {
+        for (i = 0; i < 4; i++) {
+            document.getElementById('m' + i).value = newPokemonMoves.moves[i][0];
+        }
     }
-}
-return pkm;
-}
+    return newPokemonMoves;
+    }
 
 let userPokemon = showUserPokemon(true);
 sprite1 = document.createElement('img');
@@ -128,26 +128,26 @@ function handleAttacks(btn, move, userPokemon, aiPokemon) {
         attack(move, userPokemon, aiPokemon, 'hp2', '');
         setTimeout(attack, 2000, aiPokemon.moves[Math.floor(Math.random() * 3)], aiPokemon, userPokemon, 'hp1', 'Enemy ');
     });
-}
-handleAttacks(btn, move, userPokemon, aiPokemon);
-}
+    }
+    handleAttacks(btn, move, userPokemon, aiPokemon);
+    }
 
 function attack(move, attacker, receiver, hp, owner) {
-document.getElementById('comment').innerHTML = '<p>' + owner + attacker.name + ' used ' + move[0] + '</p>';
-let successfulHit = Math.floor(Math.random()*150);
-receiver.hp -= Math.floor(successfulHit)
-document.getElementById(hp).innerHTML = '<p>HP: ' + receiver.hp + '/' + receiver.fullhp + '</p>';
-checkWinner(hp);
-}
+    document.getElementById('comment').innerHTML = '<p>' + owner + attacker.name + ' used ' + move[0] + '</p>';
+    let successfulHit = Math.floor(Math.random()*150);
+    receiver.hp -= Math.floor(successfulHit)
+    document.getElementById(hp).innerHTML = '<p>HP: ' + receiver.hp + '/' + receiver.fullhp + '</p>';
+    checkWinner(hp);
+    }
 
 function checkWinner(hp) {
-let f = (userPokemon.hp <= 0) ? userPokemon : (aiPokemon.hp <= 0) ? aiPokemon : false;
-if (f != false) {
-    alert('GAME OVER: ' + f.name + ' fainted!');
-    document.getElementById(hp).innerHTML = '<p>HP: 0/' + f.fullhp + '</p>';
-    setTimeout(function() {
-        location.reload();
-    }, 1500)
-}
+    let f = (userPokemon.hp <= 0) ? userPokemon : (aiPokemon.hp <= 0) ? aiPokemon : false;
+    if (f != false) {
+        alert('GAME OVER: ' + f.name + ' fainted!');
+        document.getElementById(hp).innerHTML = '<p>HP: 0/' + f.fullhp + '</p>';
+        setTimeout(function() {
+            location.reload();
+        }, 1500)
+    }
 
-}
+    }

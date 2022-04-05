@@ -6,38 +6,29 @@ Create User
 
 {% block content %}
 
-<h1>Create an Account</h1>
-<form method="POST">
+<h1>Welcome to the Pokemon app</h1>
+<h2>Create an account below</h2>
+<section class="icon-list">    
+  <i class="nes-ash"></i>
+  <i class="nes-ash"></i>
+  <i class="nes-ash"></i>
+  <i class="nes-ash"></i>
+</section>
+<div class="nes-container with-title is-centered">
+  <form method="POST" action="/pokemon">
 
-  <div class="form-group row">
-    <label for="first_name" class="col-sm-2 col-form-label">Username</label>
-    <div class="col-sm-10">
-      <input type="text"
-             class="form-control"
-             id="username"
-             name="username"
-             placeholder="Enter a super sweet username">
+    <div style="background-color:#212529; padding: 1rem;" class="nes-field is-inline">
+      <label for="dark_field" style="color:#fff;">Username</label>
+      <input type="text" id="username" class="nes-input is-dark" name="username"
+      placeholder="Enter a super sweet username">
     </div>
+    <div style="background-color:#212529; padding: 1rem;" class="nes-field is-inline">
+      <label for="password" class="col-sm-2 col-form-label">Password</label>
+      <input type="text" id="username" class="nes-input is-dark" name="password"
+      placeholder="Password">
   </div>
+        <button type="submit" class="nes-btn is-error">Add</button>
 
-  <div class="form-group row">
-    <label for="last_name" class="col-sm-2 col-form-label">Password</label>
-    <div class="col-sm-10">
-      <input type="text"
-             class="form-control"
-             id="password"
-             name="password"
-             placeholder="Enter a password">
-    </div>
-  </div>
-
-
-  <div class="form-group row">
-    <div class="ml-auto mr-3">
-      <button type="submit" class="btn btn-success">Add</button>
-    </div>
-  </div>
-
-</form>
-
+  </form>
+</div>
 {% endblock %}

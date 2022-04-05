@@ -19,33 +19,29 @@ toolbar = DebugToolbarExtension(app)
 
 connect_db(app)
 
-@app.route('/pokemon')
+@app.route('/pokemon', methods=['GET', 'POST'])
 def start():
 
     return render_template('home.html')
 
 ############################# USER ROUTES #################################
-@app.route('/signup', methods=["GET", "POST"])
+@app.route('/signup', methods=["GET"])
+def users_new_form():
+    """Show a form to create a new user"""
+
+    return render_template('users/signup.html')
+
+@app.route('/signup', methods=["POST"])
 def signup():
+    """ make a new instance of a user and save it to db"""
+    new_user = User(
+        username=request.form['username'],
+        password=request.form['password'])
 
-    """Handle user signup.
-    Create new user and add to DB. Redirect to home page.
-    If form not valid, present form.
-    """
+    db.session.add(new_user)
+    db.session.commit()
 
-    form = RegisterForm()
-
-    if form.validate_on_submit():
-        user = User(
-                username=form.username.data,
-                password=form.password.data,
-            )
-        if user:
-            flash(f"Hello, {user.username}!", "account successfully created")
-            db.session.commit()
-            return redirect("/")
-    else:
-        return render_template('users/signup.html', form=form)
+    return redirect ('/pokemon')
 
 
 @app.route('/login', methods=["GET", "POST"])
