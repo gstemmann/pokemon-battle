@@ -19,7 +19,9 @@ class User(db.Model):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     username = db.Column(db.Text, nullable=False)
     password = db.Column(db.Text, nullable=False)
-
+    
+    def __repr__(self):
+        return f"<User {self.id} {self.username} {self.password} >"
 
 
 class Pokemon(db.Model):

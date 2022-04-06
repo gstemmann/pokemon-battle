@@ -1,33 +1,36 @@
 {% extends 'base.html' %}
 
-{% block title %}
-Create User
-{% endblock %}
-
 {% block content %}
 
 <h1>Welcome to the Pokemon app</h1>
 <h2>Create an account below</h2>
 <section class="icon-list">    
-  <i class="nes-ash"></i>
-  <i class="nes-ash"></i>
-  <i class="nes-ash"></i>
-  <i class="nes-ash"></i>
+    <i class="nes-ash"></i>
+    <i class="nes-ash"></i>
+    <i class="nes-ash"></i>
+    <i class="nes-ash"></i>
+    <i class="nes-ash"></i>
+    <i class="nes-ash"></i>
+    <i class="nes-ash"></i>
+    <i class="nes-ash"></i>
+    <i class="nes-ash"></i>
 </section>
-<div class="nes-container with-title is-centered">
-  <form method="POST" action="/pokemon">
 
-    <div style="background-color:#212529; padding: 1rem;" class="nes-field is-inline">
-      <label for="dark_field" style="color:#fff;">Username</label>
-      <input type="text" id="username" class="nes-input is-dark" name="username"
-      placeholder="Enter a super sweet username">
-    </div>
-    <div style="background-color:#212529; padding: 1rem;" class="nes-field is-inline">
-      <label for="password" class="col-sm-2 col-form-label">Password</label>
-      <input type="text" id="username" class="nes-input is-dark" name="password"
-      placeholder="Password">
-  </div>
-        <button type="submit" class="nes-btn is-error">Add</button>
+<div class="nes-container with-title is-centered">
+  <form method="POST">
+
+      <div style="background-color:#212529; padding: 1rem;" class="nes-field is-inline">
+        <label for="dark_field" style="color:#fff;">Username</label>
+        <input type="text" class="nes-input is-dark" name="username" placeholder="Enter a super sweet username">
+      </div>
+
+      <div style="background-color:#212529; padding: 1rem;" class="nes-field is-inline">
+        <label for="dark_field" style="color:#fff;">Password</label>
+        <input type="text" class="nes-input is-dark" name="password" placeholder="Password">
+      </div>
+      <div style="background-color:#212529; padding: 1rem;" class="nes-field is-inline">
+        <button type="submit" class="nes-btn is-error">Create User</button>
+      </div>
 
   </form>
 </div>

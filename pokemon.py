@@ -47,10 +47,14 @@ def get_pokemon():
 
 
 
+def get_data():
+    list = []
+    for pokemon in list:
+        pypokedex.get(name=pokemon)
+        list.push(pokemon.name)
+        print(list)
 
-p = pypokedex.get(name='charmander')
-
-
+get_data()
 # @app.route('/pokemon/show')
 # def homepage():
 #     """Show homepage: """

@@ -1,3 +1,4 @@
+//pkmlist is set up to make a new isntance of this pokemon
 class Pokemon {
     constructor(name, sprite, hp, moves) {
         this.name = name;
@@ -10,10 +11,10 @@ class Pokemon {
 
 let pkmList = [
 ['Dragonite', 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/149.svg', 366, [
-    ['Thunderbolt', 'electric', 20, 0.99],
-    ['Dragon Rage', 'electric', 100, 0.88],
-    ['Hyper Beam', 'normal', 90, 0.90],
-    ['Thunder', 'normal', 80, 0.95]
+    ['Dragon Dance', 'electric', 20, 0.99],
+    ['Swift', 'electric', 100, 0.88],
+    ['Ice Beam', 'normal', 90, 0.90],
+    ['Fire Spin', 'normal', 80, 0.95]
 ]],
 ['Charizard', 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/6.svg', 360, [
     ['Flamethrower', 'fire', 95, 0.95],
@@ -86,24 +87,24 @@ let pkmList = [
 
 function showUserPokemon(boolean) {
     let p = pkmList[0];
-    let newPokemonMoves = new Pokemon(p[0], p[1], p[2], p[3]);
+    let userPokemon = new Pokemon(p[0], p[1], p[2], p[3]);
     if (boolean) {
         for (i = 0; i < 4; i++) {
-            document.getElementById('m' + i).value = newPokemonMoves.moves[i][0];
+            document.getElementById('m' + i).value = userPokemon.moves[i][0];
         }
     }
-    return newPokemonMoves;
+    return userPokemon;
     }
     
 function showAiPokemon(boolean) {
     let p = pkmList[Math.floor(Math.random() * pkmList.length)];
-    let newPokemonMoves = new Pokemon(p[0], p[1], p[2], p[3]);
+    let aiPokemon = new Pokemon(p[0], p[1], p[2], p[3]);
     if (boolean) {
         for (i = 0; i < 4; i++) {
-            document.getElementById('m' + i).value = newPokemonMoves.moves[i][0];
+            document.getElementById('m' + i).value = aiPokemon.moves[i][0];
         }
     }
-    return newPokemonMoves;
+    return aiPokemon;
     }
 
 let userPokemon = showUserPokemon(true);
@@ -118,27 +119,30 @@ sprite2.src = aiPokemon.sprite;
 document.getElementById('aiPokemon').appendChild(sprite2);
 document.getElementById('hp2').innerHTML = '<p>HP: ' + aiPokemon.hp + '/' + aiPokemon.fullhp + '</p>';
 
-
-for (i = 0; i < 4; i++) {
-let btn = document.getElementById('m' + i);
-let move = userPokemon.moves[i];
-
-function handleAttacks(btn, move, userPokemon, aiPokemon) {
-    btn.addEventListener('click', function(e) {
-        attack(move, userPokemon, aiPokemon, 'hp2', '');
-        setTimeout(attack, 2000, aiPokemon.moves[Math.floor(Math.random() * 3)], aiPokemon, userPokemon, 'hp1', 'Enemy ');
-    });
-    }
-    handleAttacks(btn, move, userPokemon, aiPokemon);
-    }
-
 function attack(move, attacker, receiver, hp, owner) {
     document.getElementById('comment').innerHTML = '<p>' + owner + attacker.name + ' used ' + move[0] + '</p>';
     let successfulHit = Math.floor(Math.random()*150);
     receiver.hp -= Math.floor(successfulHit)
     document.getElementById(hp).innerHTML = '<p>HP: ' + receiver.hp + '/' + receiver.fullhp + '</p>';
     checkWinner(hp);
+}
+
+function getAttacks() {
+    for (i = 0; i < 4; i++) {
+        let btn = document.getElementById('m' + i);
+        let move = userPokemon.moves[i];
+
+        function handleAttacks(btn, move, userPokemon, aiPokemon) {
+            btn.addEventListener('click', function(e) {
+                attack(move, userPokemon, aiPokemon, 'hp2', '');
+                setTimeout(attack, 2000, aiPokemon.moves[Math.floor(Math.random() * 3)], aiPokemon, userPokemon, 'hp1', 'Enemy ');
+                });
+            }
+            handleAttacks(btn, move, userPokemon, aiPokemon);
     }
+}
+getAttacks()
+
 
 function checkWinner(hp) {
     let f = (userPokemon.hp <= 0) ? userPokemon : (aiPokemon.hp <= 0) ? aiPokemon : false;

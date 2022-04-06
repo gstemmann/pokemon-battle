@@ -1,11 +1,11 @@
 const base_url = 'https://pokeapi.co/api/v2';
 const pokedex = document.getElementById('pokedex');
-const mainDiv = document.getElementById('main-div');
-const photoContainer = document.getElementById('photo-container');
-const moveList = document.getElementById('move-list');
-const typeList = document.getElementById('types');
-const showButton = document.getElementById('show');
-const removeButton = document.getElementById('remove');
+// const mainDiv = document.getElementById('main-div');
+// const photoContainer = document.getElementById('photo-container');
+// const moveList = document.getElementById('move-list');
+// const typeList = document.getElementById('types');
+// const showButton = document.getElementById('show');
+// const removeButton = document.getElementById('remove');
 
 const fetchPokemon = () => {
 	// make empty array called promises

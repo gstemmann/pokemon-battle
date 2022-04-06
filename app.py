@@ -19,13 +19,8 @@ toolbar = DebugToolbarExtension(app)
 
 connect_db(app)
 
-@app.route('/pokemon', methods=['GET', 'POST'])
-def start():
-
-    return render_template('home.html')
-
 ############################# USER ROUTES #################################
-@app.route('/signup', methods=["GET"])
+@app.route('/', methods=["GET"])
 def users_new_form():
     """Show a form to create a new user"""
 
@@ -34,15 +29,21 @@ def users_new_form():
 @app.route('/signup', methods=["POST"])
 def signup():
     """ make a new instance of a user and save it to db"""
-    new_user = User(
-        username=request.form['username'],
-        password=request.form['password'])
+    username = request.form['username']
+    password = request.form['password']
 
-    db.session.add(new_user)
+    user = User(username=username, password=password)
+    db.session.add(user)
     db.session.commit()
 
-    return redirect ('/pokemon')
+    return redirect (f"/{user.id}")
 
+@app.route("/<int:user_id>")
+def show_pet(user_id):
+    """Show info on a single user."""
+
+    user = User.query.get_or_404(user_id)
+    return render_template("users/show.html", user=user)
 
 @app.route('/login', methods=["GET", "POST"])
 def login():
@@ -96,6 +97,12 @@ def show_pokemon():
 #     # types = pokemon.types
 
 #     return render_template ('/pokemon/choose.html', pokemon=pokemon, moves=moves)
+
+
+@app.route('/pokemon/stats', methods=['GET', 'POST'])
+def start():
+
+    return render_template('pokemon/stats.html')
 
 @app.route('/pokemon/battle')
 def show_pokemon_battle_screen():
