@@ -111,19 +111,19 @@ let userPokemon = showUserPokemon(true);
 sprite1 = document.createElement('img');
 sprite1.src = userPokemon.sprite;
 document.getElementById('userPokemon').appendChild(sprite1);
-document.getElementById('hp1').innerHTML = '<p>HP: ' + userPokemon.hp + '/' + userPokemon.fullhp + '</p>';
+document.getElementById('hp1').innerHTML = '<h1>' + userPokemon.name + '</h1>' + '<p>HP: ' + userPokemon.hp + '/' + userPokemon.fullhp + '</p>';
 
 let aiPokemon = showAiPokemon(false);
 sprite2 = document.createElement('img');
 sprite2.src = aiPokemon.sprite;
 document.getElementById('aiPokemon').appendChild(sprite2);
-document.getElementById('hp2').innerHTML = '<p>HP: ' + aiPokemon.hp + '/' + aiPokemon.fullhp + '</p>';
+document.getElementById('hp2').innerHTML = '<h1>' + aiPokemon.name + '</h1>' +  '<p>HP: ' + aiPokemon.hp + '/' + aiPokemon.fullhp + '</p>';
 
 function attack(move, attacker, receiver, hp, owner) {
     document.getElementById('comment').innerHTML = '<p>' + owner + attacker.name + ' used ' + move[0] + '</p>';
     let successfulHit = Math.floor(Math.random()*150);
     receiver.hp -= Math.floor(successfulHit)
-    document.getElementById(hp).innerHTML = '<p>HP: ' + receiver.hp + '/' + receiver.fullhp + '</p>';
+    document.getElementById(hp).innerHTML = '<h1>' + receiver.name + '</h1>' + '<p>HP: ' + receiver.hp + '/' + receiver.fullhp + '</p>';
     checkWinner(hp);
 }
 

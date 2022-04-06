@@ -12,17 +12,16 @@ async function getPokemonData() {
 		url    : `${base_url}/pokemon/${inputValue}/`,
 		method : 'GET'
 	});
-	console.log(response.data.sprites);
-	photoContainer.append(inputValue);
-	appendNewPhoto(response.data.sprites.other.dream_world.front_default);
 
-	let movesTitle = document.createTextNode('Moves:');
-	moveList.append(movesTitle);
+	photoContainer.innerHTML = `<h1> ${inputValue}`
+	appendNewPhoto(response.data.sprites.other.dream_world.front_default);
+	
+	moveList.innerHTML = '<h2>Moves:</h2>';
 	response.data.moves.splice(0, 4).map(function(c) {
 		appendMoves(c.move.name);
 	});
-	let typeTitle = document.createTextNode('Type:');
-	typeList.append(typeTitle);
+
+	typeList.innerHTML = '<h2>Type:<h2>'
 	let types = response.data.types;
 	for (let i = 0; i < types.length; i++) {
 		appendType(types[i].type.name);
@@ -50,8 +49,7 @@ async function appendMoves(res) {
 	mainDiv.append(moveList);
 }
 
-removeButton.addEventListener('click', function(e) {
-	e.preventDefault();
+removeButton.addEventListener('click', function() {
 	photoContainer.remove();
 	typeList.remove();
 	moveList.remove();
@@ -62,12 +60,3 @@ showButton.addEventListener('click', function(e) {
 	getPokemonData();
 });
 
-function getPokemon() {
-	for (let i=1; i<=151; i++)  {
-	const response = axios({
-		url    : `${base_url}/pokemon/${i}/`,
-		method : 'GET'
-	});
-	console.log(response.data.moves);
-}
-}

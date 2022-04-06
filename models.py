@@ -1,5 +1,6 @@
 from flask_sqlalchemy import SQLAlchemy
 
+DEFAULT_IMAGE_URL= 'https://www.kindpng.com/picc/m/227-2271952_red-sprite-pokemon-png-transparent-png.png'
 db = SQLAlchemy()
 
 def connect_db(app):
@@ -19,6 +20,7 @@ class User(db.Model):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     username = db.Column(db.Text, nullable=False)
     password = db.Column(db.Text, nullable=False)
+    image_url = db.Column(db.Text, nullable=False, default=DEFAULT_IMAGE_URL)
     
     def __repr__(self):
         return f"<User {self.id} {self.username} {self.password} >"

@@ -20,13 +20,13 @@ toolbar = DebugToolbarExtension(app)
 connect_db(app)
 
 ############################# USER ROUTES #################################
-@app.route('/', methods=["GET"])
+@app.route('/users/signup', methods=["GET"])
 def users_new_form():
     """Show a form to create a new user"""
 
     return render_template('users/signup.html')
 
-@app.route('/signup', methods=["POST"])
+@app.route('/users/signup', methods=["POST"])
 def signup():
     """ make a new instance of a user and save it to db"""
     username = request.form['username']
@@ -35,11 +35,11 @@ def signup():
     user = User(username=username, password=password)
     db.session.add(user)
     db.session.commit()
-
+    
     return redirect (f"/{user.id}")
 
 @app.route("/<int:user_id>")
-def show_pet(user_id):
+def show_user(user_id):
     """Show info on a single user."""
 
     user = User.query.get_or_404(user_id)

@@ -1,40 +1,32 @@
 {% extends 'base.html' %}
 {% block content %}
 <body>
-        <div class="nes-container with-title is-centered">
-         <h1 class="title">
-        <img style="text-align:center;width:300px;" class="logo" title="Reset Game" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/International_Pok%C3%A9mon_logo.svg/2000px-International_Pok%C3%A9mon_logo.svg.png" alt="Pokemon">            
+        <table class="nes-table is-bordered is-dark" style="width:100%; height:75%">
+                <tr>
+                        <td id="hp1"></td>
+                        <td id="hp2"></td>
+                </tr>
+                <tr>
+                        <td id="userPokemon"></td>
+                        <td id="aiPokemon"></td>
+                </tr>
+                <tr>
+                        <td id="comment"></td>
+                </tr>
+                <tr>
+                        <td>
+                                
+                                <input type = 'button' class = "nes-btn is-primary" id = 'm0'>
+                                <input type = 'button' class = "nes-btn is-success" id = 'm1'>
+                                <input type = 'button' class = "nes-btn is-warning" id = 'm2'>
+                                <input type = 'button' class = "nes-btn is-error" id = 'm3'>
+                        </td>
+                </tr>
 
-        </h1>
-         </div>
-
-
-<table class="nes-table is-bordered is-dark" style="width:100%">
-    <tr>
-            <td id="hp1"></td>
-            <td id="hp2"></td>
-    </tr>
-    <tr>
-            <td id="userPokemon"></td>
-            <td id="aiPokemon"></td>
-    </tr>
-    <tr>
-            <td id="comment"></td>
-    </tr>
-    <tr>
-            <td>
-                
-                    <input type = 'button' class = "nes-btn is-primary" id = 'm0'>
-                    <input type = 'button' class = "nes-btn is-success" id = 'm1'>
-                    <input type = 'button' class = "nes-btn is-warning" id = 'm2'>
-                    <input type = 'button' class = "nes-btn is-error" id = 'm3'>
-            </td>
-    </tr>
-
-</table>
-<a href="/pokemon/stats">go to pokemon stats screen</a>
-<script src="{{url_for('static', filename='battle.js')}}"></script>
+        </table>
+        <a href="/pokemon/stats" style="font-size:25px">go to pokemon stats screen</a>
+        <script src="{{url_for('static', filename='battle.js')}}"></script>
 </body>
-</html>
+
 {% endblock %}
         

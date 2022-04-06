@@ -1,9 +1,10 @@
 
 """Forms for flask-feedback."""
 
+from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField
 from wtforms.validators import InputRequired, Length
-from flask_wtf import FlaskForm
+
 
 
 class LoginForm(FlaskForm):

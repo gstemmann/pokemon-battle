@@ -1,3 +1,26 @@
+{% extends 'base.html' %}
+
 {% block content %}
-    {{ user.username }}
+
+
+   <h1> {{ user.username }} successfully created an account </h1>
+
+    <img src="{{ user.image_url }}">
+  
+
+   <form>
+      <button
+              formaction="/users/{{ user.id }}/edit"
+              formmethod="GET">Edit
+      </button>
+      <button
+              formaction="/users/{{ user.id }}/delete"
+              formmethod="POST">Delete
+      </button>
+    </form>
+
+
+
+
+<a href="/pokemon/stats">Go to pokemon screen</a>
 {% endblock %}

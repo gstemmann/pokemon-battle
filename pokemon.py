@@ -52,7 +52,7 @@ def get_data():
     for pokemon in list:
         pypokedex.get(name=pokemon)
         list.push(pokemon.name)
-        print(list)
+        print()
 
 get_data()
 # @app.route('/pokemon/show')
