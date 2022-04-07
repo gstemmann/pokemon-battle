@@ -14,7 +14,7 @@ async function getPokemonData() {
 	});
 
 	let sprite = response.data.sprites.other.dream_world.front_default;
-	photoContainer.innerHTML = `<h1> ${inputValue}`
+	photoContainer.innerHTML = `<h1> ${inputValue} </h1>`
 	appendNewPhoto(sprite);
 	
 	moveList.innerHTML = '<h2>Moves:</h2>';
@@ -32,11 +32,12 @@ async function getPokemonData() {
 	for (let i = 0; i < types.length; i++) {
 		appendType(types[i].type.name);
 	}
-
+	let hp = Math.floor(Math.random() * (368 - 358 + 1) + 368)
 	let battleArray = [];
-	 battleArray.push(inputValue) 
-	 battleArray.push(sprite)
-	 battleArray.push(moveSet);
+	battleArray.push(inputValue) 
+	battleArray.push(sprite)
+	battleArray.push(hp)
+	battleArray.push(moveSet);
 	localStorage.setItem('pokemon', JSON.stringify(battleArray));
 		console.log(battleArray)
 	
