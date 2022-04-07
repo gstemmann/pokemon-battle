@@ -19,7 +19,7 @@ toolbar = DebugToolbarExtension(app)
 
 connect_db(app)
 
-############################# USER ROUTES #################################
+############################# USER ROUTES #####################################
 @app.route('/users/signup', methods=["GET"])
 def users_new_form():
     """Show a form to create a new user"""
@@ -40,42 +40,32 @@ def signup():
 
 @app.route("/<int:user_id>")
 def show_user(user_id):
-    """Show info on a single user."""
 
     user = User.query.get_or_404(user_id)
-    return render_template("users/show.html", user=user)
+    return render_template("/users/show.html", user=user)
 
-@app.route('/login', methods=["GET", "POST"])
-def login():
-    """Handle user login."""
+@app.route('/users/<int:user_id>/edit', methods=["POST"])
+def users_update(user_id):
+    """Handle form submission for updating an existing user"""
 
-    form = LoginForm()
+    user = User.query.get_or_404(user_id)
+    user.first_name = request.form['username']
 
-    if form.validate_on_submit():
-        user = User.authenticate(form.username.data,
-                                 form.password.data)
+    db.session.add(user)
+    db.session.commit()
 
-        if user:
-            flash(f"Hello, {user.username}!", "success")
-            return redirect("/")
+    return redirect("/users/show.html")
 
-        flash("Invalid credentials.", 'danger')
+@app.route('/users/<int:user_id>/delete', methods=["POST"])
+def users_destroy(user_id):
+    """Handle form submission for deleting an existing user"""
 
-    return render_template('users/login.html', form=form)
+    user = User.query.get_or_404(user_id)
+    db.session.delete(user)
+    db.session.commit()
 
-# ADD A USER PROFILE HERE WITH LIST OF USER'S POKEMON
+    return redirect("/users/signup.html")
 
-# @app.route('/user/<id:int>', methods=['GET'])
-# def show_user(user_id):
-#     user = User.query.get(user_id)
-#     return render_template('user/show.html', user=user)
-
-@app.route('/logout')
-def logout():
-    """Handle logout of user."""
-
-    flash('you are now logged out')
-    return redirect("/login")
 
 
 ###################### POKEMON ROUTES ############################

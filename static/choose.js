@@ -13,19 +13,33 @@ async function getPokemonData() {
 		method : 'GET'
 	});
 
+	let sprite = response.data.sprites.other.dream_world.front_default;
 	photoContainer.innerHTML = `<h1> ${inputValue}`
-	appendNewPhoto(response.data.sprites.other.dream_world.front_default);
+	appendNewPhoto(sprite);
 	
 	moveList.innerHTML = '<h2>Moves:</h2>';
+
 	response.data.moves.splice(0, 4).map(function(c) {
 		appendMoves(c.move.name);
 	});
+	moveSet = response.data.moves.splice(0, 4).map(function(c) {
+		return c.move.name;
+	});
+	console.log(moveSet);
 
 	typeList.innerHTML = '<h2>Type:<h2>'
 	let types = response.data.types;
 	for (let i = 0; i < types.length; i++) {
 		appendType(types[i].type.name);
 	}
+
+	let battleArray = [];
+	 battleArray.push(inputValue) 
+	 battleArray.push(sprite)
+	 battleArray.push(moveSet);
+	localStorage.setItem('pokemon', JSON.stringify(battleArray));
+		console.log(battleArray)
+	
 }
 
 async function appendNewPhoto(res) {
