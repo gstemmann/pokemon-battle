@@ -31,16 +31,9 @@ let aiPkmList = [
 
 
 let userPkmList = JSON.parse(localStorage.getItem("pokemon"));
-console.log(userPkmList)
-
 
 function showUserPokemon(boolean) {
-    //new instance of pokemon according to pokemon class
-    let userPokemon = new Pokemon(userPkmList[0],
-                                    userPkmList[1],
-                                    userPkmList[2],
-                                    userPkmList[3]);
-
+    let userPokemon = new Pokemon(userPkmList[0], userPkmList[1], userPkmList[2], userPkmList[3]);
     if (boolean) {
         for (i = 0; i < 4; i++) {
             document.getElementById('m' + i).value = userPokemon.moves[i];
