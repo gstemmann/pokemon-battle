@@ -26,24 +26,24 @@ class User(db.Model):
         return f"<User {self.id} {self.username} {self.password} >"
 
 
-class Pokemon(db.Model):
+# class Pokemon(db.Model):
 
-    __tablename__ = 'pokemon_info'
+#     __tablename__ = 'pokemon_info'
 
-    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    name = db.Column(db.Text,  nullable=False)
-    sprite = db.Column(db.Text, nullable=False)
-    hp = db.Column(db.Integer, nullable=False)   
-    ability_id = db.Column(
-        db.Integer,
-        db.ForeignKey('abilities.id'), nullable=True)
+#     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+#     name = db.Column(db.Text,  nullable=False)
+#     sprite = db.Column(db.Text, nullable=False)
+#     hp = db.Column(db.Integer, nullable=False)   
+#     ability_id = db.Column(
+#         db.Integer,
+#         db.ForeignKey('abilities.id'), nullable=True)
 
-    def __repr__(self):
-        return f"<Pokemon {self.id} {self.name} {self.hp}>"
+#     def __repr__(self):
+#         return f"<Pokemon {self.id} {self.name} {self.hp}>"
 
-class Ability(db.Model):
+# class Ability(db.Model):
 
-    __tablename__ = 'abilities'
+#     __tablename__ = 'abilities'
 
-    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    name = db.Column(db.Text, nullable=False)
+#     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+#     name = db.Column(db.Text, nullable=False)

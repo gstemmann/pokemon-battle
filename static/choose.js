@@ -16,7 +16,6 @@ async function getPokemonData() {
 	let sprite = response.data.sprites.other.dream_world.front_default;
 	photoContainer.innerHTML = `<h1> ${inputValue} </h1>`
 	appendNewPhoto(sprite);
-	
 	moveList.innerHTML = '<h2>Moves:</h2>';
 
 	response.data.moves.splice(0, 4).map(function(c) {
@@ -25,7 +24,7 @@ async function getPokemonData() {
 	moveSet = response.data.moves.splice(0, 4).map(function(c) {
 		return c.move.name;
 	});
-	console.log(moveSet);
+
 
 	typeList.innerHTML = '<h2>Type:<h2>'
 	let types = response.data.types;

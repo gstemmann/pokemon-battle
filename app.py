@@ -1,25 +1,28 @@
 import os
 from flask import Flask, render_template, request, flash, redirect
 from flask_debugtoolbar import DebugToolbarExtension
-from models import db, connect_db, User, Pokemon, Ability
-from forms import RegisterForm, LoginForm
-from unicodedata import name
-import requests
-import pypokedex
+from models import db, connect_db, User
 
 
 
+app = Flask (__name__)
+
+# app.config['SQLALCHEMY_DATABASE_URI'] = (
+#     os.environ.get('DATABASE_URL', 'postgresql:///pokemon'))
 
 uri = os.environ.get("DATABASE_URL", "postgresql:///pokemon")
 if uri.startswith("postgres://"):
     uri = uri.replace("postgres://", "postgresql://", 1)
 
-app = Flask (__name__)
-
 app.config['SQLALCHEMY_DATABASE_URI'] = uri
+
+
+
+
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SQLALCHEMY_ECHO'] = True
 app.config['DEBUG_TB_INTERCEPT_REDIRECTS'] = True
+# app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URI').replace('postgres://', 'postgresql://')
 app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY', 'nevertell')
 toolbar = DebugToolbarExtension(app)
 
@@ -81,12 +84,12 @@ def users_destroy(user_id):
 ###################### POKEMON ROUTES ############################
 
 
-@app.route('/pokemon/show')
-def show_pokemon():
-    pokemon = Pokemon.query.all()
-    print('*******************')
-    print(pokemon)
-    return render_template('pokemon/pokemon.html', pokemon=pokemon)
+# @app.route('/pokemon/show')
+# def show_pokemon():
+#     pokemon = Pokemon.query.all()
+#     print('*******************')
+#     print(pokemon)
+#     return render_template('pokemon/pokemon.html', pokemon=pokemon)
 
 # @app.route('/pokemon/choose')
 # def show_pokemon_list():

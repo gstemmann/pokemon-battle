@@ -9,24 +9,44 @@ class Pokemon {
     }
 }
 let aiPkmList = [
-    ['Charizard', 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/6.svg', 360, [
+    ['charizard', 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/6.svg', 360, [
         ['Flamethrower'],
         ['Dragon Claw'],
         ['Air slash'],
         ['Slash']
     ]],
-    ['Blastoise', 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/9.svg', 362, [
+    ['blastoise', 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/9.svg', 362, [
         ['Surf'],
         ['Crunch'],
         ['Ice punch'],
         ['Flash cannon']
     ]],
-    ['Venusaur', 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/3.svg', 364, [
+    ['venusaur', 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/3.svg', 364, [
+        ['Petal Blizzard'],
+        ['Sludge bomb'],
+        ['Earthquake'],
+        ['Body Slam']
+    ]],
+    ['alakazam', 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/65.svg', 375, [
+    ['mega-kick'],
+    ['psychic'],
+    ['psybeam'], 
+    ['kenesis']
+    ]],
+
+    ['electabuzz', 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/125.svg', 375, [
+        ['Petal Blizzard'],
+        ['Sludge bomb'],
+        ['Earthquake'],
+        ['Body Slam']
+    ]],
+    ['venusaur', 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/3.svg', 364, [
         ['Petal Blizzard'],
         ['Sludge bomb'],
         ['Earthquake'],
         ['Body Slam']
     ]]
+    
 ];
 
 
