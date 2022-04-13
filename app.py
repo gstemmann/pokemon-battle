@@ -7,12 +7,14 @@ from unicodedata import name
 import requests
 import pypokedex
 
-app = Flask (__name__)
+
 
 
 uri = os.environ.get("DATABASE_URL", "postgresql:///pokemon")
 if uri.startswith("postgres://"):
     uri = uri.replace("postgres://", "postgresql://", 1)
+
+app = Flask (__name__)
 
 app.config['SQLALCHEMY_DATABASE_URI'] = uri
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
