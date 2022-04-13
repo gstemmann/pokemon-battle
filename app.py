@@ -111,3 +111,9 @@ def show_pokemon_battle_screen():
   
 
     return render_template ('/pokemon/battle.html')
+
+
+
+port = int(os.environ.get("PORT", 5000))
+app.run(host='0.0.0.0', port=port)
+
