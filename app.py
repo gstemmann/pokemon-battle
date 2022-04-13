@@ -25,6 +25,10 @@ toolbar = DebugToolbarExtension(app)
 
 connect_db(app)
 
+@app.route('/')
+def home():
+    return render_template('base.html')
+
 ############################# USER ROUTES #####################################
 @app.route('/users/signup', methods=["GET"])
 def users_new_form():
