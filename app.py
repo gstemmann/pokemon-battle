@@ -56,27 +56,14 @@ def show_user(user_id):
     user = User.query.get_or_404(user_id)
     return render_template("/users/show.html", user=user)
 
-@app.route('/users/<int:user_id>/edit', methods=["POST"])
-def users_update(user_id):
-    """Handle form submission for updating an existing user"""
+@app.route('/users/<int:user_id>/edit')
+def users_update():
+    return redirect("/users/edit.html")
 
-    user = User.query.get_or_404(user_id)
-    user.first_name = request.form['username']
-
-    db.session.add(user)
-    db.session.commit()
-
-    return redirect("/users/show.html")
-
-@app.route('/users/<int:user_id>/delete', methods=["POST"])
-def users_destroy(user_id):
-    """Handle form submission for deleting an existing user"""
-
-    user = User.query.get_or_404(user_id)
-    db.session.delete(user)
-    db.session.commit()
-
-    return redirect("/users/signup.html")
+@app.route('/users/<int:user_id>/delete')
+def users_destroy():
+ 
+    return redirect("/users/delete.html")
 
 
 
