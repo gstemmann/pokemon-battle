@@ -40,11 +40,47 @@ let aiPkmList = [
         ['Earthquake'],
         ['Body Slam']
     ]],
-    ['venusaur', 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/3.svg', 364, [
-        ['Petal Blizzard'],
-        ['Sludge bomb'],
-        ['Earthquake'],
+    ['dragonite', 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/149.svg', 364, [
+        ['hyper-beam'],
+        ['psybeam'],
+        ['fire-blast'],
         ['Body Slam']
+    ]],
+    ['wartortle', 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/8.svg', 364, [
+        ['surf'],
+        ['hydro pump'],
+        ['bite'],
+        ['tackle']
+    ]],
+    ['charmeleon', 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/5.svg', 364, [
+        ['flamethrower'],
+        ['slash'],
+        ['fire-blast'],
+        ['rage']
+    ]],
+    ['ivysaur', 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/2.svg', 364, [
+        ['solarbeam'],
+        ['razor-leaf'],
+        ['poisonpowder'],
+        ['leech seed']
+    ]],
+    ['butterfree', 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/12.svg', 364, [
+        ['confusion'],
+        ['swift'],
+        ['sleep powder'],
+        ['stun spore']
+    ]],
+    ['beedrill', 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/15.svg', 364, [
+        ['pin missle'],
+        ['fury attack'],
+        ['string shot'],
+        ['swords dance']
+    ]],
+    ['pidgeot', 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/18.svg', 364, [
+        ['razor-wind'],
+        ['gust'],
+        ['sand-attack'],
+        ['whirlwind']
     ]]
     
 ];
