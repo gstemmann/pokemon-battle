@@ -11,7 +11,7 @@ Live Link: <p align="center">
 
 ### **Tools Used**
 
-This app will make use of the poke api https://pokeapi.co/ for access to information and images. The JS contains event listeners to dynamically call data from this external API.
+This app will make use of the poke api https://pokeapi.co/ for access to information and images. The JS source code contains event listeners to dynamically call data from this external API.
 
 Styling was achieved using this open source CSS library: https://github.com/nostalgic-css/NES.css.
 
