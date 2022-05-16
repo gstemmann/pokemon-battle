@@ -27,7 +27,7 @@ Other Tools
 ### **User Flow**
 
 
-Once registered, users are given access to the "Choose Pokemon" and they are able to choose any of the 450 pokemon to take into battle!
+Once registered, users are given access to the "Choose Pokemon" screen and they are able to choose any of the 450 pokemon to take into battle!
 
 New users should begin their experience by choosing their first Pokemon. After choosing their Pokemon they are able to see stats for the chosen Pokemon. They can then decide to take that Pokemon into battle by pushing the **BATTLE!!** button. They will be taken to the Battle Arena where they will be greeted by a randomly selected spawned pokemon. During this stage, Local Storage will be utilized so that the chosen Pokemon, and its stats will be maintained into the battle arena. 
 Once they have entered the battle arena they will see their Pokemon and the enemy Pokemon. 
