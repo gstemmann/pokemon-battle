@@ -29,7 +29,7 @@ Other Tools
 
 Once registered, users are given access to the "Choose Pokemon" screen and they are able to choose any of the 450 pokemon to take into battle!
 
-New users should begin their experience by choosing their first Pokemon. After choosing their Pokemon they are able to see stats for the chosen Pokemon. They can then decide to take that Pokemon into battle by pushing the **BATTLE!!** button. They will be taken to the Battle Arena where they will be greeted by a randomly selected spawned pokemon. During this stage, Local Storage will be utilized so that the chosen Pokemon, and its stats will be maintained into the battle arena. 
+New users should begin their experience by choosing their first Pokemon. After choosing their Pokemon they are able to see stats for the chosen Pokemon. They can then decide to take that Pokemon into battle by pushing the **BATTLE!!** button. They will be taken to the Battle Arena where they will be greeted by a randomly selected spawned enemy pokemon. During this stage, Local Storage will be utilized so that the chosen Pokemon, and its stats will be maintained into the battle arena. 
 Once they have entered the battle arena they will see their Pokemon and the enemy Pokemon. 
 
 They can select a move from a list of abilities from the Poke API. Once an ability has been selected the AI enemy Pokemon will attack back, users can see how badly their pokemon was wounded by the attack as well as how much damage their own Pokemon is dealing to the opponent. The user can decide to keep battling by continuing to attack the enemy or at anytime they can return to the "Choose Pokemon" screen to choose a new Pokemon and go back into battle.
